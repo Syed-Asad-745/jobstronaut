@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Job } from "@/types/job";
+import { Job, JobStatus } from "@/types/job";
 import { sampleJobs } from "@/data/sample-jobs";
 import Board from "@/components/Board";
 import AddJobForm from "@/components/AddJobForm";
@@ -13,10 +13,17 @@ export default function JobBoard() {
     setJobs((prev) => [...prev, job]);
   }
 
+  function changeStatus(id: string, status: JobStatus) {
+    setJobs((prev) => prev.map((job) => (job.id === id ? { ...job, status } : job)));
+  }
+
   return (
     <>
       <AddJobForm onAdd={addJob} />
-      <Board jobs={jobs} />
+      <Board
+        jobs={jobs}
+        onStatusChange={changeStatus}
+      />{" "}
     </>
   );
 }
