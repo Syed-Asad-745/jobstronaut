@@ -17,12 +17,17 @@ export default function JobBoard() {
     setJobs((prev) => prev.map((job) => (job.id === id ? { ...job, status } : job)));
   }
 
+  function deleteJob(id: string) {
+    setJobs((prev) => prev.filter((job) => job.id !== id));
+  }
+
   return (
     <>
       <AddJobForm onAdd={addJob} />
       <Board
         jobs={jobs}
         onStatusChange={changeStatus}
+        onDelete={deleteJob}
       />{" "}
     </>
   );

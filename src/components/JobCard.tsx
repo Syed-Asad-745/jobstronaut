@@ -2,7 +2,7 @@ import { Job, JobStatus } from "@/types/job";
 
 const statuses: JobStatus[] = ["wishlist", "applied", "interview", "offer", "rejected"];
 
-export default function JobCard({ job, onStatusChange }: { job: Job; onStatusChange: (id: string, status: JobStatus) => void }) {
+export default function JobCard({ job, onStatusChange, onDelete }: { job: Job; onStatusChange: (id: string, status: JobStatus) => void; onDelete: (id: string) => void }) {
   return (
     <div className="rounded-lg border p-4">
       <h3 className="font-semibold">{job.role}</h3>
@@ -21,6 +21,12 @@ export default function JobCard({ job, onStatusChange }: { job: Job; onStatusCha
           </option>
         ))}
       </select>
+      <button
+        onClick={() => onDelete(job.id)}
+        className="ml-2 text-sm text-red-600 cursor-pointer hover:bg-red-200 px-4 py-1.5 rounded-md"
+      >
+        Delete
+      </button>
     </div>
   );
 }

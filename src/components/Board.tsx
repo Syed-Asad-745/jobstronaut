@@ -9,7 +9,7 @@ const columns: { status: JobStatus; label: string }[] = [
   { status: "rejected", label: "Rejected" },
 ];
 
-export default function Board({ jobs, onStatusChange }: { jobs: Job[]; onStatusChange: (id: string, status: JobStatus) => void }) {
+export default function Board({ jobs, onStatusChange, onDelete }: { jobs: Job[]; onStatusChange: (id: string, status: JobStatus) => void; onDelete: (id: string) => void }) {
   return (
     <div className="grid gap-4 md:grid-cols-5">
       {columns.map((column) => (
@@ -23,6 +23,7 @@ export default function Board({ jobs, onStatusChange }: { jobs: Job[]; onStatusC
                   key={job.id}
                   job={job}
                   onStatusChange={onStatusChange}
+                  onDelete={onDelete}
                 />
               ))}
           </div>
