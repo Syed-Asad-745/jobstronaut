@@ -29,8 +29,8 @@ export default async function Home() {
     );
   }
 
-  const { rows } = await pool.query<Job>("SELECT id, company, role, status FROM jobs ORDER BY created_at DESC");
-
+  const { rows } = await pool.query<Job>("SELECT id, company, role, status FROM jobs WHERE user_id = $1 ORDER BY created_at DESC", [session.user.id]);
+  
   return (
     <main className="p-8">
       <div className="mb-6 flex items-center justify-between">
