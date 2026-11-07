@@ -40,7 +40,7 @@ export default function AddJobForm({ onAdd }: { onAdd: (job: Job) => void }) {
       />
       <button
         type="submit"
-        className="rounded bg-black px-4 py-2 text-white"
+        className="rounded-md bg-black px-4 py-2 text-white cursor-pointer"
       >
         Add job
       </button>

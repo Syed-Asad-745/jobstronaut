@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import { Job, JobStatus } from "@/types/job";
-import { sampleJobs } from "@/data/sample-jobs";
 import Board from "@/components/Board";
 import AddJobForm from "@/components/AddJobForm";
 
-export default function JobBoard() {
-  const [jobs, setJobs] = useState<Job[]>(sampleJobs);
+export default function JobBoard({ initialJobs }: { initialJobs: Job[] }) {
+  const [jobs, setJobs] = useState<Job[]>(initialJobs);
 
   function addJob(job: Job) {
     setJobs((prev) => [...prev, job]);
