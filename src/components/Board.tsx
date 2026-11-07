@@ -23,8 +23,11 @@ export default function Board({
   return (
     <div className="grid gap-4 md:grid-cols-5">
       {columns.map((column) => (
-        <section key={column.status}>
-          <h2 className="mb-3 font-semibold">{column.label}</h2>
+        <section
+          key={column.status}
+          className="border p-2 rounded-lg"
+        >
+          <h2 className="mb-3 font-semibold text-center underline">{column.label}</h2>
           <div className="flex flex-col gap-3">
             {jobs
               .filter((job) => job.status === column.status)

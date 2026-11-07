@@ -3,6 +3,7 @@ import { auth, signIn, signOut } from "@/auth";
 import { pool } from "@/lib/db";
 import { Job } from "@/types/job";
 import Link from "next/link";
+import Image from "next/image";
 
 export const dynamic = "force-dynamic";
 
@@ -43,9 +44,17 @@ export default async function Home() {
 
   return (
     <main className="p-8">
-      <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Jobstronaut</h1>
-        <div className="flex items-center gap-4">
+      <div className="relative mb-6 flex justify-center">
+        <Image
+          src={"/LongLogo.png"}
+          alt={"Jobstronaut Logo"}
+          width={999}
+          height={999}
+          loading="eager"
+          className="rounded-xl h-56 w-fit"
+        />
+
+        <div className="absolute right-0 flex items-center gap-4 self-start">
           <Link
             href="/resume"
             className="text-sm underline"

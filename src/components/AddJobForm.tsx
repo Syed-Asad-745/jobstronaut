@@ -16,7 +16,7 @@ export default function AddJobForm({ onAdd }: { onAdd: (company: string, role: s
   return (
     <form
       onSubmit={handleSubmit}
-      className="mb-6 flex flex-wrap gap-2"
+      className="mb-6 flex flex-wrap gap-2 justify-self-center"
     >
       <input
         value={company}
