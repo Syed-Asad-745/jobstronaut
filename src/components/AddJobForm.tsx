@@ -34,7 +34,7 @@ export default function AddJobForm({ onAdd }: { onAdd: (company: string, role: s
       />
       <button
         type="submit"
-        className="rounded-md bg-black px-4 py-2 text-white cursor-pointer"
+        className="rounded-md bg-emerald-900 px-4 py-2 text-white font-semibold cursor-pointer hover:scale-110 transition"
       >
         Add job
       </button>

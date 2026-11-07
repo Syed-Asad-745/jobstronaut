@@ -13,14 +13,16 @@ export default async function ResumePage() {
   const resume = await getResume();
 
   return (
-    <main className="mx-auto max-w-3xl p-8">
+    <main className="mx-auto min-w-250 p-8">
       <Link
         href="/"
-        className="text-sm text-gray-500"
+        className="text-sm text-blue-500 hover:bg-gray-200 px-4 py-2 rounded-lg"
       >
-        ← Back to board
+        ⮜ Back to board
       </Link>
-      <h1 className="mb-6 mt-2 text-3xl font-bold">Your resume</h1>
+      <h1 className="mb-6 mt-2 text-3xl font-bold">
+        Your resume <span className="text-gray-500 font-light text-2xl">(text only)</span>
+      </h1>
       <ResumeForm initialContent={resume} />
     </main>
   );

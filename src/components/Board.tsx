@@ -25,9 +25,9 @@ export default function Board({
       {columns.map((column) => (
         <section
           key={column.status}
-          className="border p-2 rounded-lg"
+          className="border border-emerald-500 p-3 rounded-lg"
         >
-          <h2 className="mb-3 font-semibold text-center underline">{column.label}</h2>
+          <h2 className="mb-3 font-semibold text-emerald-900 text-center underline">{column.label}</h2>
           <div className="flex flex-col gap-3">
             {jobs
               .filter((job) => job.status === column.status)

@@ -43,7 +43,7 @@ export default async function Home() {
   );
 
   return (
-    <main className="p-8">
+    <main className="relative p-8">
       <div className="relative mb-6 flex justify-center">
         <Image
           src={"/LongLogo.png"}
@@ -78,6 +78,7 @@ export default async function Home() {
         </div>
       </div>
       <JobBoard initialJobs={rows} />
+      <span className="text-gray-600 absolute right-10 mt-1">version: 1.0.0</span>
     </main>
   );
 }

@@ -26,7 +26,7 @@ export default function ResumeForm({ initialContent }: { initialContent: string 
         <button
           onClick={handleSave}
           disabled={!content.trim()}
-          className="rounded bg-black px-4 py-2 text-white disabled:opacity-50"
+          className="rounded-lg bg-black px-4 py-2 text-white disabled:opacity-50 hover:scale-110 cursor-pointer transition"
         >
           Save resume
         </button>

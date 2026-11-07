@@ -33,12 +33,10 @@ export default function JobCard({
   }
 
   return (
-    <div className="rounded-lg border p-4">
+    <div className="rounded-lg border-2 border-dotted border-emerald-300 bg-white p-4 shadow-xl">
       <h3 className="font-semibold">{job.role}</h3>
       <p className="text-sm text-gray-500">{job.company}</p>
-
       {job.matchScore !== null && <p className="mt-2 text-sm font-medium">Match: {job.matchScore}%</p>}
-
       <select
         value={job.status}
         onChange={(e) => onStatusChange(job.id, e.target.value as JobStatus)}
@@ -55,18 +53,16 @@ export default function JobCard({
       </select>
       <button
         onClick={() => onDelete(job.id)}
-        className="ml-2 text-sm text-red-600"
+        className="ml-4 text-sm text-red-600 bg-red-100 px-4 py-1.5 rounded-md cursor-pointer hover:bg-red-600 hover:text-white transition"
       >
         Delete
       </button>
-
       <button
         onClick={() => setOpen(!open)}
         className="mt-3 block text-sm underline"
       >
         {open ? "Hide AI" : "AI analysis"}
       </button>
-
       {open && (
         <div className="mt-3">
           <textarea
