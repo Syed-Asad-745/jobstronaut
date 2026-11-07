@@ -9,3 +9,12 @@ export async function generateText(prompt: string): Promise<string> {
   });
   return response.text ?? "";
 }
+
+export async function generateJson(prompt: string): Promise<unknown> {
+  const response = await ai.models.generateContent({
+    model: process.env.GEMINI_MODEL!,
+    contents: prompt,
+    config: { responseMimeType: "application/json" },
+  });
+  return JSON.parse(response.text ?? "{}");
+}

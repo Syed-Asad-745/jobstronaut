@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Job, JobStatus } from "@/types/job";
 import Board from "@/components/Board";
 import AddJobForm from "@/components/AddJobForm";
-import { addJob, updateJobStatus, deleteJob } from "@/app/actions";
+import { addJob, updateJobStatus, deleteJob, analyzeJob } from "@/app/actions";
 export default function JobBoard({ initialJobs }: { initialJobs: Job[] }) {
   const [jobs, setJobs] = useState<Job[]>(initialJobs);
 
@@ -23,6 +23,11 @@ export default function JobBoard({ initialJobs }: { initialJobs: Job[] }) {
     await deleteJob(id);
   }
 
+  async function handleAnalyze(id: string, description: string) {
+    const result = await analyzeJob(id, description);
+    setJobs((prev) => prev.map((job) => (job.id === id ? { ...job, ...result } : job)));
+  }
+
   return (
     <>
       <AddJobForm onAdd={handleAdd} />
@@ -30,6 +35,7 @@ export default function JobBoard({ initialJobs }: { initialJobs: Job[] }) {
         jobs={jobs}
         onStatusChange={changeStatus}
         onDelete={handleDelete}
+        onAnalyze={handleAnalyze}
       />{" "}
     </>
   );

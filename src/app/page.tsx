@@ -30,7 +30,16 @@ export default async function Home() {
     );
   }
 
-  const { rows } = await pool.query<Job>("SELECT id, company, role, status FROM jobs WHERE user_id = $1 ORDER BY created_at DESC", [session.user.id]);
+  const { rows } = await pool.query<Job>(
+    `SELECT id, company, role, status,
+            job_description AS "jobDescription",
+            match_score AS "matchScore",
+            analysis
+     FROM jobs
+     WHERE user_id = $1
+     ORDER BY created_at DESC`,
+    [session.user.id],
+  );
 
   return (
     <main className="p-8">
