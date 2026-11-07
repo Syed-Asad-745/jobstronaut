@@ -1,20 +1,14 @@
 "use client";
 
 import { SubmitEvent, useState } from "react";
-import { Job } from "@/types/job";
 
-export default function AddJobForm({ onAdd }: { onAdd: (job: Job) => void }) {
+export default function AddJobForm({ onAdd }: { onAdd: (company: string, role: string) => void }) {
   const [company, setCompany] = useState("");
   const [role, setRole] = useState("");
 
   function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
-    onAdd({
-      id: crypto.randomUUID(),
-      company,
-      role,
-      status: "wishlist",
-    });
+    onAdd(company, role);
     setCompany("");
     setRole("");
   }

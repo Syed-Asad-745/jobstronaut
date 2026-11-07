@@ -4,12 +4,14 @@ import { useState } from "react";
 import { Job, JobStatus } from "@/types/job";
 import Board from "@/components/Board";
 import AddJobForm from "@/components/AddJobForm";
+import { addJob } from "@/app/actions";
 
 export default function JobBoard({ initialJobs }: { initialJobs: Job[] }) {
   const [jobs, setJobs] = useState<Job[]>(initialJobs);
 
-  function addJob(job: Job) {
-    setJobs((prev) => [...prev, job]);
+  async function handleAdd(company: string, role: string) {
+    const newJob = await addJob(company, role);
+    setJobs((prev) => [newJob, ...prev]);
   }
 
   function changeStatus(id: string, status: JobStatus) {
@@ -22,7 +24,7 @@ export default function JobBoard({ initialJobs }: { initialJobs: Job[] }) {
 
   return (
     <>
-      <AddJobForm onAdd={addJob} />
+      <AddJobForm onAdd={handleAdd} />
       <Board
         jobs={jobs}
         onStatusChange={changeStatus}
