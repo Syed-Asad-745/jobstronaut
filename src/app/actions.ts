@@ -5,6 +5,8 @@ import { pool } from "@/lib/db";
 import { generateJson } from "@/lib/ai";
 import { Analysis, Job, JobStatus } from "@/types/job";
 
+const DAILY_LIMIT = 5;
+
 async function requireUserId(): Promise<string> {
   const session = await auth();
   const userId = session?.user?.id;
@@ -58,6 +60,16 @@ export async function analyzeJob(id: string, jobDescription: string): Promise<{ 
 
   const resume = await getResume();
   if (!resume) throw new Error("Save your resume first");
+
+  const { rowCount: allowed } = await pool.query(
+    `INSERT INTO ai_usage (user_id)
+     SELECT $1::text
+     WHERE (SELECT count(*) FROM ai_usage
+            WHERE user_id = $1::text AND created_at > now() - interval '24 hours') < $2::int
+     RETURNING id`,
+    [userId, DAILY_LIMIT],
+  );
+  if (!allowed) throw new Error("Daily AI limit reached");
 
   const prompt = `You are a strict, honest recruiter. Compare the resume with the job description.
 Reply with JSON only, in exactly this shape:
