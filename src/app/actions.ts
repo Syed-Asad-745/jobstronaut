@@ -26,3 +26,18 @@ export async function deleteJob(id: string): Promise<void> {
   const userId = await requireUserId();
   await pool.query("DELETE FROM jobs WHERE id = $1 AND user_id = $2", [id, userId]);
 }
+
+export async function getResume(): Promise<string> {
+  const userId = await requireUserId();
+  const { rows } = await pool.query<{ content: string }>("SELECT content FROM resumes WHERE user_id = $1", [userId]);
+  return rows[0]?.content ?? "";
+}
+
+export async function saveResume(content: string): Promise<void> {
+  const userId = await requireUserId();
+  await pool.query(
+    `INSERT INTO resumes (user_id, content) VALUES ($1, $2)
+     ON CONFLICT (user_id) DO UPDATE SET content = $2, updated_at = now()`,
+    [userId, content.trim()],
+  );
+}

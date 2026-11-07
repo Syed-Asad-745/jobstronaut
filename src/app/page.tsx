@@ -2,6 +2,7 @@ import JobBoard from "@/components/JobBoard";
 import { auth, signIn, signOut } from "@/auth";
 import { pool } from "@/lib/db";
 import { Job } from "@/types/job";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
@@ -30,25 +31,33 @@ export default async function Home() {
   }
 
   const { rows } = await pool.query<Job>("SELECT id, company, role, status FROM jobs WHERE user_id = $1 ORDER BY created_at DESC", [session.user.id]);
-  
+
   return (
     <main className="p-8">
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-3xl font-bold">Jobstronaut</h1>
-        <form
-          action={async () => {
-            "use server";
-            await signOut({ redirectTo: "/" });
-          }}
-        >
-          <span className="mr-3 text-sm text-gray-500">{session.user.name}</span>
-          <button
-            type="submit"
-            className="rounded border px-3 py-1 text-sm"
+        <div className="flex items-center gap-4">
+          <Link
+            href="/resume"
+            className="text-sm underline"
           >
-            Sign out
-          </button>
-        </form>
+            Resume
+          </Link>
+          <form
+            action={async () => {
+              "use server";
+              await signOut({ redirectTo: "/" });
+            }}
+          >
+            <span className="mr-3 text-sm text-gray-500">{session.user.name}</span>
+            <button
+              type="submit"
+              className="rounded border px-3 py-1 text-sm"
+            >
+              Sign out
+            </button>
+          </form>
+        </div>
       </div>
       <JobBoard initialJobs={rows} />
     </main>
