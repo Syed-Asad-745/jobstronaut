@@ -5,7 +5,7 @@ import { pool } from "@/lib/db";
 import { generateJson } from "@/lib/ai";
 import { Analysis, Job, JobStatus } from "@/types/job";
 
-const DAILY_LIMIT = 50;
+const DAILY_LIMIT = 5;
 
 async function requireUserId(): Promise<string> {
   const session = await auth();

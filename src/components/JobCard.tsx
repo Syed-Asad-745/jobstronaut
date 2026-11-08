@@ -25,7 +25,6 @@ export default function JobCard({
     try {
       await onAnalyze(job.id, description);
     } catch {
-      setError("Analysis failed. Make sure your resume is saved, then try again.");
       setError("Analysis failed. Save your resume first, or you may have reached the daily limit of 5.");
     } finally {
       setLoading(false);
