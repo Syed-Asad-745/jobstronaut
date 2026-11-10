@@ -19,8 +19,11 @@ export default function JobBoard({ initialJobs }: { initialJobs: Job[] }) {
   }
 
   async function handleDelete(id: string) {
-    setJobs((prev) => prev.filter((job) => job.id !== id));
-    await deleteJob(id);
+    const confirmed = confirm("Confirm?");
+    if (confirmed) {
+      setJobs((prev) => prev.filter((job) => job.id !== id));
+      await deleteJob(id);
+    }
   }
 
   async function handleAnalyze(id: string, description: string) {

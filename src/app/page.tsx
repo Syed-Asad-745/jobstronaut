@@ -12,21 +12,23 @@ export default async function Home() {
 
   if (!session?.user) {
     return (
-      <main className="p-8">
-        <h1 className="mb-6 text-3xl font-bold">Jobstronaut</h1>
-        <form
-          action={async () => {
-            "use server";
-            await signIn("github", { redirectTo: "/" });
-          }}
-        >
-          <button
-            type="submit"
-            className="rounded bg-black px-4 py-2 text-white"
+      <main className="flex justify-center py-36 h-screen">
+        <div className="bg-[#162938]/60 px-24 py-12 h-fit w-fit rounded-xl backdrop-blur-xs shadow-[0px_0px_12px_4px_#162938]">
+          <h1 className="mb-6 text-3xl font-bold text-white">Jobstronaut</h1>
+          <form
+            action={async () => {
+              "use server";
+              await signIn("github", { redirectTo: "/" });
+            }}
           >
-            Sign in with GitHub
-          </button>
-        </form>
+            <button
+              type="submit"
+              className="rounded-lg bg-[#11862f] cursor-pointer hover:shadow-[0px_0px_12px_#266e3c] px-6 py-3 text-white font-extralight"
+            >
+              Sign in with <span className="font-extrabold">GitHub</span>
+            </button>
+          </form>
+        </div>
       </main>
     );
   }
@@ -46,18 +48,18 @@ export default async function Home() {
     <main className="relative p-8">
       <div className="relative mb-6 flex justify-center">
         <Image
-          src={"/LongLogo.png"}
+          src={"/FinalLogo.png"}
           alt={"Jobstronaut Logo"}
           width={999}
           height={999}
           loading="eager"
-          className="rounded-xl h-56 w-fit"
+          className="rounded-xl h-56 w-fit backdrop-blur-xs shadow-[0px_0px_32px_#162938]"
         />
 
         <div className="absolute right-0 flex items-center gap-4 self-start">
           <Link
             href="/resume"
-            className="text-sm underline"
+            className="text-sm bg-white/60 px-6 py-2.5 text-[#162938] font-extralight rounded-md backdrop-blur-[2px] hover:shadow-[0px_0px_12px_white] hover:bg-white transition fixed top-8 left-8"
           >
             Resume
           </Link>
@@ -67,18 +69,17 @@ export default async function Home() {
               await signOut({ redirectTo: "/" });
             }}
           >
-            <span className="mr-3 text-sm text-gray-500">{session.user.name}</span>
+            <span className="mr-3 text-sm text-white">{session.user.name}</span>
             <button
               type="submit"
-              className="rounded border px-3 py-1 text-sm"
+              className="rounded cursor-pointer bg-blue-600/60 text-white font-extralight px-6 py-2.5 text-sm hover:bg-blue-600 hover:shadow-[0px_0px_12px_#155dfc] transition"
             >
               Sign out
             </button>
           </form>
         </div>
       </div>
-      <JobBoard initialJobs={rows} />
-      <span className="text-gray-600 absolute right-10 mt-1">version: 1.0.0</span>
+      <JobBoard initialJobs={rows} />{" "}
     </main>
   );
 }

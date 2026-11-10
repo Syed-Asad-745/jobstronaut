@@ -20,13 +20,13 @@ export default function ResumeForm({ initialContent }: { initialContent: string 
         onChange={(e) => setContent(e.target.value)}
         rows={18}
         placeholder="Paste your resume text here"
-        className="w-full rounded border p-3"
+        className="w-full rounded-lg border-2 border-white text-white p-3"
       />
       <div className="mt-3 flex items-center gap-3">
         <button
           onClick={handleSave}
           disabled={!content.trim()}
-          className="rounded-lg bg-black px-4 py-2 text-white disabled:opacity-50 hover:scale-110 cursor-pointer transition"
+          className="rounded-lg bg-blue-600/60 px-6 py-2.5 text-white disabled:opacity-50 hover:bg-blue-600 hover:shadow-[0px_0px_12px_#1944a3] cursor-pointer transition"
         >
           Save resume
         </button>

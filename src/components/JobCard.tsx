@@ -32,9 +32,9 @@ export default function JobCard({
   }
 
   return (
-    <div className="rounded-lg border-2 border-dotted border-emerald-300 bg-white p-4 shadow-xl">
-      <h3 className="font-semibold">{job.role}</h3>
-      <p className="text-sm text-gray-500">{job.company}</p>
+    <div className="rounded-lg border-2 border-[#162938] bg-black/30 backdrop-blur-xs p-4 shadow-xl text-white">
+      <h3 className="font-semibold ">{job.role}</h3>
+      <p className="text-sm">{job.company}</p>
       {job.matchScore !== null && <p className="mt-2 text-sm font-medium">Match: {job.matchScore}%</p>}
       <select
         value={job.status}
@@ -45,6 +45,7 @@ export default function JobCard({
           <option
             key={s}
             value={s}
+            className="bg-[#162938]"
           >
             {s}
           </option>
@@ -52,13 +53,13 @@ export default function JobCard({
       </select>
       <button
         onClick={() => onDelete(job.id)}
-        className="ml-4 text-sm text-red-600 bg-red-100 px-4 py-1.5 rounded-md cursor-pointer hover:bg-red-600 hover:text-white transition"
+        className="ml-4 text-sm text-red-600 bg-transparent font-extralight px-4 py-1.5 rounded-md cursor-pointer hover:bg-red-600 hover:text-white hover:-translate-y-1 hover:shadow-[0px_0px_12px_#e7000b] transition"
       >
         Delete
       </button>
       <button
         onClick={() => setOpen(!open)}
-        className="mt-3 block text-sm underline"
+        className="mt-3 block text-sm underline cursor-pointer text-blue-500"
       >
         {open ? "Hide AI" : "AI analysis"}
       </button>
@@ -69,12 +70,12 @@ export default function JobCard({
             onChange={(e) => setDescription(e.target.value)}
             rows={6}
             placeholder="Paste the job description"
-            className="w-full rounded border p-2 text-sm"
+            className="w-full rounded-lg border outline-none p-4 text-sm"
           />
           <button
             onClick={handleAnalyze}
             disabled={loading || !description.trim()}
-            className="mt-2 rounded bg-black px-3 py-1 text-sm text-white disabled:opacity-50"
+            className="mt-2 rounded-md bg-blue-600/60 px-6 py-2 text-white font-extralight cursor-pointer disabled:opacity-20 hover:bg-blue-600 hover:shadow-[0px_0px_12px_#1944a3]"
           >
             {loading ? "Analyzing..." : "Analyze"}
           </button>
