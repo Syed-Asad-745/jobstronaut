@@ -32,7 +32,7 @@ export default function JobCard({
   }
 
   return (
-    <div className="rounded-lg border-2 border-[#162938] bg-black/30 backdrop-blur-xs p-4 shadow-xl text-white">
+    <div className="rounded-lg border-2 border-[#162938] bg-black/30 backdrop-blur-xs p-4 inset-shadow-[0px_0px_6px_#162938] shadow-[0px_0px_6px_#162938] text-white">
       <h3 className="font-semibold ">{job.role}</h3>
       <p className="text-sm">{job.company}</p>
       {job.matchScore !== null && <p className="mt-2 text-sm font-medium">Match: {job.matchScore}%</p>}
