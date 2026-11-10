@@ -21,7 +21,7 @@ export default function Board({
   onAnalyze: (id: string, description: string) => Promise<void>;
 }) {
   return (
-    <div className="grid gap-4 md:grid-cols-5 bg-[#162938]/60 rounded-4xl">
+    <div className="grid gap-4 md:grid-cols-5 bg-[#162938]/60 rounded-4xl pb-4">
       {columns.map((column) => (
         <section
           key={column.status}

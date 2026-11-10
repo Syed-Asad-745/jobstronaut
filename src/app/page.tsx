@@ -14,20 +14,36 @@ export default async function Home() {
     return (
       <main className="flex justify-center py-36 h-screen">
         <div className="bg-[#162938]/60 px-24 py-12 h-fit w-fit rounded-xl backdrop-blur-xs shadow-[0px_0px_12px_4px_#162938]">
-          <h1 className="mb-6 text-3xl font-bold text-white">Jobstronaut</h1>
-          <form
-            action={async () => {
-              "use server";
-              await signIn("github", { redirectTo: "/" });
-            }}
-          >
-            <button
-              type="submit"
-              className="rounded-lg bg-[#11862f] cursor-pointer hover:shadow-[0px_0px_12px_#266e3c] px-6 py-3 text-white font-extralight"
+          <h1 className="mb-10 text-3xl font-bold text-white">Jobstronaut</h1>
+          <div className="flex flex-col gap-4">
+            <form
+              action={async () => {
+                "use server";
+                await signIn("github", { redirectTo: "/" });
+              }}
             >
-              Sign in with <span className="font-extrabold">GitHub</span>
-            </button>
-          </form>
+              <button
+                type="submit"
+                className="w-full rounded-lg bg-[#11862f] cursor-pointer hover:shadow-[0px_0px_12px_#266e3c] px-6 py-3 text-white font-extralight"
+              >
+                Sign in with <span className="font-extrabold">GitHub</span>
+              </button>
+            </form>
+
+            <form
+              action={async () => {
+                "use server";
+                await signIn("google", { redirectTo: "/" });
+              }}
+            >
+              <button
+                type="submit"
+                className="w-full rounded-lg bg-white cursor-pointer hover:shadow-[0px_0px_12px_#266e3c] px-6 py-3 text-black font-extralight"
+              >
+                Sign in with <span className="font-extrabold">Google</span>
+              </button>
+            </form>
+          </div>
         </div>
       </main>
     );
