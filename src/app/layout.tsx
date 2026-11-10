@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Jobstronaut",
   description: "Track job applications and get an AI resume match score.",
   icons: {
-    icon: "/Logo.png",
+    icon: "/CompressedLogo.webp",
   },
 };
 

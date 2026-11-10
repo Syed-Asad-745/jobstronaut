@@ -64,7 +64,7 @@ export default async function Home() {
     <main className="relative p-8">
       <div className="relative mb-6 flex justify-center">
         <Image
-          src={"/FinalLogo.png"}
+          src={"/CompressedFullLogo.webp"}
           alt={"Jobstronaut Logo"}
           width={999}
           height={999}
