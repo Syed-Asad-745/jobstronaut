@@ -14,7 +14,7 @@ export default async function Home() {
     return (
       <main className="flex justify-center py-36 h-screen">
         <div className="bg-[#162938]/60 px-24 py-12 h-fit w-fit rounded-xl backdrop-blur-xs shadow-[0px_0px_12px_4px_#162938]">
-          <h1 className="mb-10 text-3xl font-bold text-white">Jobstronaut</h1>
+          <h1 className="mb-10 text-3xl font-bold text-white px-32">Jobstronaut</h1>
           <div className="flex flex-col gap-4">
             <form
               action={async () => {
@@ -24,9 +24,18 @@ export default async function Home() {
             >
               <button
                 type="submit"
-                className="w-full rounded-lg bg-[#11862f] cursor-pointer hover:shadow-[0px_0px_12px_#266e3c] px-6 py-3 text-white font-extralight"
+                className="w-full rounded-lg bg-[#11862f] cursor-pointer hover:shadow-[0px_0px_12px_limegreen] px-6 py-3 text-white font-extralight transition"
               >
-                Sign in with <span className="font-extrabold">GitHub</span>
+                <span className="flex justify-center items-center">
+                  Sign in with <span className="font-extrabold ml-1">GitHub</span>
+                  <Image
+                    src="/GitHubLogo.png"
+                    alt="GitHub Logo"
+                    height={20}
+                    width={20}
+                    className="inline ml-2"
+                  />
+                </span>
               </button>
             </form>
 
@@ -38,9 +47,18 @@ export default async function Home() {
             >
               <button
                 type="submit"
-                className="w-full rounded-lg bg-white cursor-pointer hover:shadow-[0px_0px_12px_#266e3c] px-6 py-3 text-black font-extralight"
+                className="w-full rounded-lg bg-white cursor-pointer hover:shadow-[0px_0px_12px_white] px-6 py-3 text-black font-extralight transition"
               >
-                Sign in with <span className="font-extrabold">Google</span>
+                <span className="flex justify-center items-center">
+                  Sign in with <span className="font-extrabold ml-1">Google</span>
+                  <Image
+                    src="/GoogleLogo.png"
+                    alt="Google Logo"
+                    height={20}
+                    width={20}
+                    className="inline ml-2"
+                  />
+                </span>
               </button>
             </form>
           </div>
@@ -64,7 +82,7 @@ export default async function Home() {
     <main className="relative p-8">
       <div className="relative mb-6 flex justify-center">
         <Image
-          src={"/CompressedFullLogo.webp"}
+          src={"/FullLogo.webp"}
           alt={"Jobstronaut Logo"}
           width={999}
           height={999}

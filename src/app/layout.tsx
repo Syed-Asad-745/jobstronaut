@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Jobstronaut",
   description: "Track job applications and get an AI resume match score.",
   icons: {
-    icon: "/CompressedLogo.webp",
+    icon: "/Icon.webp",
   },
 };
 
@@ -26,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[url('/CompressedBg.jpg')] bg-cover bg-center bg-no-repeat bg-fixed">{children}</body>
+      <body className="min-h-full flex flex-col bg-[url('/Background.jpg')] bg-cover bg-center bg-no-repeat bg-fixed">{children}</body>
     </html>
   );
 }
